@@ -1,0 +1,89 @@
+@use '@scss/index' as utils;
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(2em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  font-size: 1rem;
+  scroll-margin-top: 3em;
+  padding: 5em 0;
+  background-color: #ffffff;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3.5em;
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.title {
+  @include utils.getFont('Inter', 2.5em, 700, 1.2);
+  color: #1e293b;
+  margin: 0 0 0.4em;
+}
+
+.subtitle {
+  @include utils.getFont('Inter', 1.125em, 400, 1.5);
+  color: #64748b;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+
+  @media (max-width: 62em) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background-color: #ffffff;
+  border: 0.0625em solid #f1f5f9;
+  border-radius: 1.5em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.01);
+  transition: box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--delay, 0s);
+
+  &:hover {
+    box-shadow: 0 1.25em 1.5625em -0.3125em rgba(0, 0, 0, 0.05);
+  }
+}
+
+.cardTitle {
+  @include utils.getFont('Inter', 1.25em, 700, 1.3);
+  color: #0f4c3a;
+  margin: 0 0 1em;
+}
+
+.cardDescription {
+  @include utils.getFont('Inter', 1em, 400, 1.5);
+  color: #64748b;
+  margin: 0 0 2em;
+  flex-grow: 1;
+}
+
+.cardFooter {
+  margin-top: auto;
+}
+
+.result {
+  @include utils.getFont('Inter', 0.9em, 700, 1.4);
+  color: #16a34a;
+  display: block;
+}

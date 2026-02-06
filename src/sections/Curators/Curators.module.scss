@@ -1,0 +1,148 @@
+@use '@scss/index' as utils;
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(1.25em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  font-size: 1rem;
+
+  scroll-margin-top: 3em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 2em 1em;
+  min-height: auto;
+
+  @media (min-width: 768px) {
+    padding: 4em 1em;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  width: 100%;
+  animation: appear 0.8s ease-out forwards;
+}
+
+.title {
+  @include utils.getFont('Arial', 1.75em, 700, 1.2);
+  color: #1c1c1c;
+  text-align: center;
+  margin: 0 0 0.5em 0;
+  padding: 0 0.5em;
+
+  @media (min-width: 768px) {
+    @include utils.getFont('Arial', 2.25em, 700, 1.2);
+  }
+}
+
+.subtitle {
+  @include utils.getFont('Arial', 0.875em, 400, 1.5);
+  color: #6b7280;
+  text-align: center;
+  max-width: 35em;
+  margin: 0 0 2em 0;
+  padding: 0 1em;
+
+  @media (min-width: 768px) {
+    @include utils.getFont('Arial', 1em, 400, 1.5);
+    margin: 0 0 3em 0;
+  }
+}
+
+.formWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.formCard {
+  background-color: #ffffff;
+  padding: 1.5em;
+  border-radius: 1em;
+  box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 30em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    padding: 2.5em;
+    box-shadow: 0 1em 3em rgba(0, 0, 0, 0.05);
+  }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input {
+  @include utils.getFont('Arial', 1em, 400, 1.5);
+  width: 100%;
+  padding: 0.875em 1em;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5em;
+  background-color: #ffffff;
+  color: #1f2937;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  -webkit-appearance: none;
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+
+  &:focus {
+    border-color: #00d26a;
+    box-shadow: 0 0 0 2px rgba(0, 210, 106, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    padding: 1em 1.25em;
+  }
+}
+
+.button {
+  @include utils.getFont('Arial', 1em, 700, 1);
+  width: 100%;
+  padding: 0.875em;
+  background-color: #15793e;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  margin-top: 0.5em;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background-color: #126634;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  @media (min-width: 768px) {
+    @include utils.getFont('Arial', 1.125em, 700, 1);
+    padding: 1em;
+  }
+}

@@ -1,0 +1,14 @@
+
+@use './variables' as vars;
+
+@mixin getFont($font:vars.$main-font, $size:1em, $weight:400, $lineHeight:1, $letterSpacing:0px){
+
+  font:{
+    family: $font , sans-serif;
+    size: $size;
+    weight: $weight;
+  }
+
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+}

@@ -1,0 +1,137 @@
+
+@use '@scss/index' as utils;
+
+.wrapper{
+  font-size: 1rem;
+
+  padding:2.5em 3em;
+}
+
+.container {
+  background-color: #f0fdf4;
+  border-left: 0.3em solid #22c55e;
+  border-radius: 0.5em;
+
+  padding:2em;
+
+  color: #1f2937;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  @include utils.getFont($size: 1em, $weight: 400, $lineHeight: 1.5);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.iconWrapper {
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.title {
+  margin: 0;
+  @include utils.getFont($size: 1.125em, $weight: 700);
+  color: #111827;
+}
+
+.subtitle {
+  margin: 0;
+  @include utils.getFont($size: 1em, $weight: 500);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+}
+
+.listIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  border-radius: 0.2em;
+
+  &.success {
+    background-color: #4ade80;
+    color: white;
+
+    svg {
+      width: 0.8em;
+      height: 0.8em;
+    }
+  }
+
+  &.warning {
+    background-color: #fbbf24;
+    color: white;
+    @include utils.getFont($size: 0.9em, $weight: 800);
+  }
+}
+
+.listText {
+  @include utils.getFont($size: 0.95em, $lineHeight: 1.4);
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.sectionTitle {
+  margin: 0;
+  @include utils.getFont($size: 1em, $weight: 500);
+}
+
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+
+  li {
+    @include utils.getFont($size: 0.95em, $lineHeight: 1.4);
+  }
+}
+
+.gradeLabel {
+  @include utils.getFont($size: 1em, $weight: 600);
+}
+
+.commentText {
+  margin: 0;
+  @include utils.getFont($size: 0.95em, $lineHeight: 1.5, $weight: 400);
+  color: #374151;
+}

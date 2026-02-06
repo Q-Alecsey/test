@@ -1,0 +1,25 @@
+
+@use "@scss/index" as utils;
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.submitBtn {
+  margin-top: 1em;
+  width: 100%;
+  padding: 1em;
+  background-color: #2d7d32;
+  color: #fff;
+  border: none;
+  border-radius: 2em;
+  cursor: pointer;
+  @include utils.getFont('Inter', 1.1em, 600, 1);
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #1b5e20;
+  }
+}

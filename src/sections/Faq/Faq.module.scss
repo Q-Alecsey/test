@@ -1,0 +1,135 @@
+@use '@scss/index' as utils;
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(2em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.root {
+  font-size: 1rem;
+  scroll-margin-top: 3em;
+  padding: 4em 1em;
+  background-color: #fcfcfc;
+  background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+  background-size: 2em 2em;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2em;
+  @include utils.getFont(sans-serif, 2em, 700, 1.2);
+  color: #1b5e20;
+
+  // Header animation
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 2.5em;
+    height: 0.15em;
+    background-color: #2b8330;
+    margin: 0.3em auto 0;
+    border-radius: 0.1em;
+  }
+}
+
+.item {
+  background-color: #ffffff;
+  border-radius: 0.6em;
+  box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.05);
+  border: 0.06em solid #f0f0f0;
+  margin-bottom: 1em;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+  // Entry animation
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  // Option A: Using CSS Variable from JSX (Recommended for dynamic lists)
+  animation-delay: var(--delay, 0s);
+
+  // Option B: Pure SCSS loop (If list size is static/predictable)
+  // @for $i from 1 through 10 {
+  //   &:nth-child(#{$i}) {
+  //     animation-delay: #{$i * 0.1 + 0.2}s;
+  //   }
+  // }
+
+  &:hover {
+    box-shadow: 0 0.2em 0.6em rgba(0, 0, 0, 0.08);
+    border: 1px solid #a3eaa3;
+  }
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8em;
+  padding: 1.5em 2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: #1b5e20;
+
+  @include utils.getFont(sans-serif, 1.1em, 700, 1.3);
+
+  &:hover {
+    background-color: #fafafa;
+  }
+}
+
+.icon {
+  color: #2e7d32;
+  font-size: 0.8em;
+  margin-top: 0.2em;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.isOpen {
+    transform: rotate(180deg);
+  }
+}
+
+.gridWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.isOpen {
+    grid-template-rows: 1fr;
+  }
+}
+
+.contentInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.answer {
+  margin: 0;
+  padding: 0 2em 1.5em 3.5em;
+  color: #666666;
+  opacity: 0;
+  transform: translateY(-0.5em);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  .isOpen & {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  @include utils.getFont(sans-serif, 0.95em, 400, 1.5);
+}

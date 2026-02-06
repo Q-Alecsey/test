@@ -1,0 +1,103 @@
+@use "@scss/index" as utils;
+
+.formColumn {
+  flex: 0 0 28em;
+  width: 100%;
+}
+
+.formCard {
+  background: #fff;
+  padding: 2.5em;
+  border-radius: 1.5em;
+  box-shadow: 0 1em 3em rgba(0, 0, 0, 0.08);
+
+  @media (max-width: 768px){
+    padding: 1.5em;
+  }
+}
+
+.formHeader {
+  display: flex;
+  position: relative;
+  margin-bottom: 2em;
+  border-bottom: 0.0625em solid #f1f3f4;
+}
+
+.authTab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding-bottom: 0.5em;
+  @include utils.getFont('Inter', 1.5em, 700, 1.2);
+  color: #bdc1c6;
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.3s;
+  z-index: 1;
+
+  &.active {
+    color: #2d7d32;
+  }
+}
+
+.tabGlider {
+  position: absolute;
+  bottom: -0.1em;
+  left: 0;
+  width: 50%;
+  height: 0.15em;
+  background-color: #25961c;
+  border-radius: 0.1em;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.tabGliderRight {
+    transform: translateX(100%);
+  }
+}
+
+.roleToggle {
+  display: flex;
+  position: relative;
+  background-color: #f1f3f4;
+  padding: 0.25em;
+  border-radius: 2em;
+  margin-bottom: 2em;
+  overflow: hidden;
+}
+
+.roleGlider {
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  width: calc(50% - 0.25em);
+  height: calc(100% - 0.5em);
+  background-color: #2d7d32;
+  border-radius: 1.75em;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  box-shadow: 0 0.2em 0.5em rgba(45, 125, 50, 0.2);
+
+  &.roleGliderRight {
+    transform: translateX(100%);
+    left: 0;
+  }
+}
+
+.roleBtn {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  padding: 0.75em 0;
+  border-radius: 1.75em;
+  cursor: pointer;
+  @include utils.getFont('Inter', 0.9em, 600, 1);
+  color: #5f6368;
+  transition: color 0.2s ease;
+
+  &.activeRole {
+    color: #fff;
+  }
+}
+

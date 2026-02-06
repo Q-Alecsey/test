@@ -1,0 +1,68 @@
+
+@use "@scss/index" as utils;
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  width: 100%;
+}
+
+.label {
+  @include utils.getFont('Inter', 0.9em, 600, 1);
+  color: #2d7d32;
+  margin-left: 0.5em;
+}
+
+.inputWrapper{
+    position: relative;
+
+    width:100%;
+}
+
+.input {
+  width:100%;
+  box-sizing: border-box;
+
+  padding: 0.8em 2.7em 0.8em 1.2em;
+  border: 0.0625em solid #dadce0;
+  border-radius: 0.8em;
+  @include utils.getFont('Inter', 1em, 400, 1);
+  color: #3c4043;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: #9aa0a6;
+  }
+
+  &:focus {
+    border-color: #2d7d32;
+  }
+
+  &.errorInput{
+    border-color: red;
+  }
+}
+
+.eye{
+  position: absolute;
+
+  top:55%;
+  transform: translateY(-50%);
+  right: 0.8em;
+
+  background-color: transparent;
+  border:none;
+
+  cursor: pointer;
+}
+
+.error{
+  margin-left: 0.5em;
+
+  @include utils.getFont('Inter', 0.9em, 600, 1);
+
+  color:red;
+}

@@ -1,0 +1,181 @@
+@use '@scss/index' as utils;
+
+.header {
+  font-size: 1.05rem;
+  width: 100%;
+  padding: 1.25em 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  @media (max-width: 1024px) {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    padding: 1em 0;
+  }
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+
+  max-width: 80em;
+  padding: 0 2em;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5em;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75em;
+  height: 1.75em;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.brandName {
+  @include utils.getFont('Inter', 1.35em, 700, 1.1);
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 3.5em;
+
+  @media (max-width: 1024px) {
+    gap: 2em;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: #4a4a4a;
+  position: relative;
+  padding: 0.25em 0;
+  transition: color 0.2s ease;
+
+  cursor: pointer;
+
+  @include utils.getFont('Inter', 1em, 500, 1.5);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #107e3e;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  &:hover {
+    color: #107e3e;
+
+    &::after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  background-color: #107e3e;
+  color: #ffffff;
+  padding: 0.85em 1.75em;
+  border-radius: 3em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+  transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+  box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  @include utils.getFont('Inter', 0.95em, 600, 1);
+
+  @media (max-width: 480px) {
+    padding: 0.7em 1.2em;
+    font-size: 0.9em;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+                    120deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.4) 50%,
+                    transparent 100%
+    );
+    transition: all 0.7s ease-in-out;
+    z-index: -1;
+  }
+
+  &:hover {
+    background-color: #1e9852;
+    transform: translateY(-0.15em);
+    box-shadow: 0 0.5em 1em rgba(16, 126, 62, 0.25);
+
+    &::before {
+      left: 130%;
+    }
+  }
+
+  &:active {
+    transform: translateY(-0.05em);
+    box-shadow: 0 0.25em 0.5em rgba(16, 126, 62, 0.25);
+    transition-duration: 0.1s;
+  }
+}

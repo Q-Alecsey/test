@@ -1,0 +1,142 @@
+@use '@scss/index' as utils;
+
+.footer {
+  font-size: 1rem;
+  margin-top: 3em;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 3em 0 1em;
+  @include utils.getFont($size: 1rem);
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+
+  @media (max-width: 48em) {
+    padding: 2em 0 1em;
+    margin-top: 2em;
+  }
+}
+
+.container {
+  max-width: 75em;
+  margin: 0 auto;
+  padding: 0 1.25em;
+}
+
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.5em;
+  margin-bottom: 3.75em;
+
+  @media (max-width: 48em) {
+    flex-direction: column;
+    gap: 2em;
+    margin-bottom: 2em;
+  }
+}
+
+.column {
+  flex: 1;
+  min-width: 15.625em;
+
+  &.infoColumn {
+    flex: 1.5;
+    max-width: 25em;
+  }
+
+  @media (max-width: 48em) {
+    min-width: 100%;
+    flex: auto;
+
+    &.infoColumn {
+      max-width: 100%;
+    }
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.625em;
+  margin-bottom: 1.25em;
+}
+
+.logoIcon {
+  width: 2em;
+  height: 2em;
+}
+
+.logoText {
+  @include utils.getFont($size: 1.5em, $weight: 700);
+  color: #107e3e;
+}
+
+.description {
+  @include utils.getFont($size: 0.9375em, $lineHeight: 1.5, $weight: 400);
+  color: #8c9bb0;
+  max-width: 21.875em;
+
+  @media (max-width: 48em) {
+    max-width: 100%;
+  }
+}
+
+.columnTitle {
+  @include utils.getFont($size: 0.75em, $weight: 700, $letterSpacing: 0.05em);
+  text-transform: uppercase;
+  color: #212121;
+  margin-bottom: 1.5em;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-bottom: 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c9bb0;
+  font-size: 1.125em;
+}
+
+.link, .text {
+  @include utils.getFont($size: 0.9375em, $weight: 400, $lineHeight: 1.4);
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  word-break: break-all;
+
+  cursor: pointer;
+
+  &:hover {
+    color: #107e3e;
+  }
+}
+
+.copyright {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 2em;
+  text-align: center;
+
+  p {
+    @include utils.getFont($size: 0.8125em, $weight: 400);
+    color: #9ca3af;
+    margin: 0;
+  }
+}

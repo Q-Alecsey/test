@@ -1,0 +1,82 @@
+@use "@scss/index" as utils;
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  flex: 1;
+}
+
+.label {
+  @include utils.getFont('sans-serif', 0.9em, 700);
+  color: #1b5e20;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  transition: color 0.3s ease;
+}
+
+.labelIcon {
+  width: 1.4em;
+  height: 1.4em;
+  fill: currentColor;
+  opacity: 0.8;
+}
+
+.textarea {
+  @include utils.getFont('sans-serif', 0.95em, 400, 1.6);
+  padding: 1em 1.2em;
+  border: 0.0625em solid #e0e0e0;
+  border-radius: 0.6em;
+  resize: vertical;
+  color: #424242;
+  outline: none;
+  background-color: #fafafa;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  min-height: 5em;
+  width: 100%;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #bdbdbd;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    border-color: #bdbdbd;
+  }
+
+  &:focus {
+    border-color: #409b44;
+    background-color: #ffffff;
+    transform: translateY(-0.15em);
+
+    &::placeholder {
+      opacity: 0.7;
+    }
+  }
+}
+
+.fieldGroup:focus-within .label {
+  color: #e65100;
+}
+
+.activeBorder {
+  border-color: #a5d6a7;
+  background-color: #f1f8e9;
+
+  &:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0.5em 1em rgba(76, 175, 80, 0.15);
+  }
+}
+
+.fieldGroup:focus-within .activeBorder+.label {
+  color: #2e7d32;
+}
+
+.error {
+  @include utils.getFont("Inter", 0.8em, 400, 1);
+
+  color: red;
+}

@@ -1,0 +1,132 @@
+@use '@scss/index' as utils;
+
+.landingSection {
+  font-size:1rem;
+
+  scroll-margin-top: 3em;
+
+  padding: 2em;
+
+  background-color: #fff;
+  color: #111;
+
+  @media (max-width: 1050px){
+    font-size:0.9rem;
+  }
+}
+
+.container {
+  display: flex;
+  gap:2em;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.contentColumn {
+  width: 60%;
+
+  padding-top: 2em;
+  @media (max-width: 900px) {
+   width: 100%;
+    margin-bottom: 3em;
+  }
+}
+
+.title {
+  @include utils.getFont('Inter', 2.5em, 700, 1.2);
+  margin-bottom: 1.5em;
+  color: #1a1e21;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.featureItem {
+  display: flex;
+  gap: 1.5em;
+  align-items: flex-start;
+}
+
+.featureIcon {
+  flex-shrink: 0;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  background-color: #e6f4ea;
+  color: #1e8e3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include utils.getFont('Inter', 1em, 700, 1);
+}
+
+.featureText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.featureTitle {
+  @include utils.getFont('Inter', 1.125em, 700, 1.2);
+  margin: 0;
+  color: #202124;
+}
+
+.featureDescription {
+  @include utils.getFont('Inter', 1em, 400, 1.5);
+  margin: 0;
+  color: #5f6368;
+  max-width: 35em;
+}
+
+//animation
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.featureItem {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+
+  &:nth-child(1) { animation-delay: 0.2s; }
+  &:nth-child(2) { animation-delay: 0.4s; }
+  &:nth-child(3) { animation-delay: 0.6s; }
+}
+
+.logWrapper {
+  flex:1;
+
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+
+  @media (max-width: 900px) {
+    width:80%;
+  }
+
+  @media (max-width: 550px) {
+    width:100%;
+  }
+}
