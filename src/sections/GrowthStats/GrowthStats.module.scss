@@ -1,15 +1,21 @@
 @use '@scss/index' as utils;
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(2em);
+    transform: translateY(1.5em);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -18,12 +24,11 @@
 
 .main {
   font-size: 1rem;
-  background: radial-gradient(circle at 50% 0%, #15803d 0%, #022c22 100%);
-  padding: 3em 2em;
+  background: #1e5127;
+  padding: 3% 2em;
   position: relative;
-  overflow: hidden;
   opacity: 0;
-  animation: fadeIn 1.2s ease-out forwards;
+  animation: fadeIn 0.8s ease-out forwards;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -32,243 +37,152 @@
 
   @media (max-width: 480px) {
     font-size: 0.85rem;
-    padding: 3em 1em;
+    padding: 4em 1em;
   }
-}
-
-.main::before {
-  content: '';
-  position: absolute;
-  top: -15%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  height: 60%;
-  background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
-  pointer-events: none;
-  filter: blur(2em);
 }
 
 .container {
   color: #ffffff;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  position: relative;
-  z-index: 1;
 }
 
 .title {
-  @include utils.getFont($size: 3em, $weight: 800, $lineHeight: 1.1, $letterSpacing: -0.02em);
+  @include utils.getFont($size: 2.5em, $weight: 600, $lineHeight: 1.2, $letterSpacing: -0.02em);
   text-align: center;
   margin-bottom: 2em;
-  background: linear-gradient(180deg, #ffffff 0%, #bbf7d0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 3em rgba(74, 222, 128, 0.3);
+  color: #ffffff;
   opacity: 0;
-  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
-
-  @media (max-width: 900px){
-    margin-bottom: 1em;
-  }
+  animation: fadeInUp 0.6s ease-out 0.2s forwards;
 
   @media (max-width: 768px) {
-    font-size: 2.5em;
-    margin-bottom: 1.5em;
+    font-size: 2em;
+    margin-bottom: 2em;
   }
 
   @media (max-width: 480px) {
-    font-size: 2em;
+    font-size: 1.75em;
   }
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2em;
+  gap: 1.5em;
   width: 100%;
+  max-width: 60em;
   margin-bottom: 4em;
-
-  @media (max-width: 1200px) {
-    font-size:0.9rem;
-  }
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    gap: 1.5em;
+    gap: 1em;
     margin-bottom: 3em;
   }
 }
 
 .statCard {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5em;
-  padding: 3em 2em;
+  background: #163820;
+  border: 1px solid #2d5a35;
+  border-radius: 1em;
+  padding: 2.5em 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, transform 0.3s ease;
   opacity: 0;
-  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  width: 100%;
+  animation: fadeInUp 0.6s ease-out forwards;
 
-  @media (max-width: 900px) {
-    width:auto;
+  &:nth-child(1) {
+    animation-delay: 0.3s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.5s;
+  }
+
+  &:hover {
+    transform: translateY(-0.25em);
+    border-color: #4ade80;
   }
 
   @media (max-width: 768px) {
-    padding: 2.5em 1.5em;
-  }
-
-  &:nth-child(1) { animation-delay: 0.5s; }
-  &:nth-child(2) { animation-delay: 0.7s; }
-  &:nth-child(3) { animation-delay: 0.9s; }
-
-  &:hover {
-    transform: translateY(-0.5em);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 2em 4em rgba(0, 0, 0, 0.2), 0 0 3em rgba(74, 222, 128, 0.15);
-
-    .statValue {
-      text-shadow: 0 0 1em rgba(74, 222, 128, 0.8);
-      transform: scale(1.05);
-      color: #86efac;
-    }
+    padding: 2em 1.5em;
   }
 }
 
 .statLabel {
-  @include utils.getFont($size: 0.9em, $weight: 600, $letterSpacing: 0.04em);
-  color: #d1fae5;
+  @include utils.getFont($size: 0.75em, $weight: 500, $letterSpacing: 0.05em);
+  color: #a7c4ab;
   margin-bottom: 1em;
   text-transform: uppercase;
-  opacity: 0.9;
 }
 
 .statValue {
-  @include utils.getFont($size: 4em, $weight: 800, $letterSpacing: -0.03em);
+  @include utils.getFont($size: 3em, $weight: 700, $letterSpacing: -0.02em);
   color: #4ade80;
   margin-bottom: 0.3em;
-  line-height: 0.9;
-  transition: all 0.4s ease;
-  text-shadow: 0 0 1.5em rgba(74, 222, 128, 0.2);
-
-  @media (max-width: 1024px) {
-    font-size: 3.5em;
-  }
+  line-height: 1;
 
   @media (max-width: 480px) {
-    font-size: 3em;
+    font-size: 2.5em;
   }
 }
 
 .statSub {
-  @include utils.getFont($size: 0.85em, $weight: 500);
-  color: #ecfdf5;
-  opacity: 0.7;
-}
-
-@keyframes cardShimmer {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+  @include utils.getFont($size: 0.85em, $weight: 400);
+  color: #6b8f70;
 }
 
 .featureCard {
-  background: linear-gradient(135deg, #ffffff 0%, #f6fdf9 50%, #ffffff 100%);
-  background-size: 200% 200%;
-  color: #022c22;
-  border-radius: 2em;
-  padding: 2.5em;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 1em;
+  padding: 2em;
   display: flex;
-  gap: 2em;
+  gap: 1.5em;
   align-items: flex-start;
-  max-width: 50em;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 2em 5em -1em rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  max-width: 40em;
+  transition: border-color 0.3s ease;
   opacity: 0;
-  animation:
-          fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s forwards,
-          cardShimmer 10s ease infinite alternate;
+  animation: fadeInUp 0.6s ease-out 0.6s forwards;
 
   @media (max-width: 700px) {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 2em;
-    gap: 1.5em;
+    gap: 1.25em;
   }
 
   &:hover {
-    transform: translateY(-0.4em) scale(1.01);
-    box-shadow:
-            0 3em 7em -1em rgba(0, 0, 0, 0.25),
-            0 1em 3em rgba(16, 185, 129, 0.15),
-            0 0 0 1px rgba(255, 255, 255, 0.9) inset;
-
-    .iconWrapper {
-      box-shadow: 0 1em 2.5em rgba(16, 185, 129, 0.3);
-      border-color: #86efac;
-
-      .icon {
-        filter: drop-shadow(0 4px 8px rgba(5, 150, 105, 0.3));
-        transform: scale(1.1);
-      }
-    }
-
-    .iconGlow {
-      animation-duration: 1.5s;
-      opacity: 0.8;
-    }
+    border-color: #4ade80;
   }
 }
 
 .iconWrapper {
   flex-shrink: 0;
-  width: 4em;
-  height: 4em;
-  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
-  border: 1px solid #bbf7d0;
-  border-radius: 1em;
+  width: 3em;
+  height: 3em;
+  background: #22c55e;
+  border-radius: 0.75em;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  transition: all 0.5s ease;
-  box-shadow: 0 0.8em 2em rgba(16, 185, 129, 0.2);
 
   .icon {
-    color: #059669;
-    width: 2em;
-    height: 2em;
-    z-index: 1;
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    transform: scale(1);
-    filter: drop-shadow(0 2px 4px rgba(5, 150, 105, 0.2));
+    color: #ffffff;
+    width: 1.5em;
+    height: 1.5em;
   }
 }
 
 .iconGlow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(52, 211, 153, 0.5) 0%, rgba(255,255,255,0) 70%);
-  opacity: 0.6;
-  animation: pulse 3s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; transform: scale(0.85); }
-  50% { opacity: 0.9; transform: scale(1.15); }
+  display: none;
 }
 
 .contentWrapper {
@@ -282,29 +196,27 @@
 }
 
 .badge {
-  background: #d1fae5;
-  color: #059669;
-  padding: 0.5em 1em;
-  border-radius: 2em;
-  @include utils.getFont($size: 0.7em, $weight: 800, $letterSpacing: 0.08em);
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 0.4em 0.8em;
+  border-radius: 0.5em;
+  @include utils.getFont($size: 0.65em, $weight: 600, $letterSpacing: 0.06em);
   text-transform: uppercase;
-  margin-bottom: 1.2em;
-  box-shadow: 0 0.2em 0.8em rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.1);
+  margin-bottom: 1em;
 }
 
 .featureTitle {
-  @include utils.getFont($size: 1.4em, $weight: 800, $lineHeight: 1.2, $letterSpacing: -0.01em);
-  margin-bottom: 0.6em;
-  color: #064e3b;
+  @include utils.getFont($size: 1.25em, $weight: 600, $lineHeight: 1.3, $letterSpacing: -0.01em);
+  margin-bottom: 0.5em;
+  color: #14532d;
 
   @media (max-width: 480px) {
-    font-size: 1.25em;
+    font-size: 1.1em;
   }
 }
 
 .featureText {
-  @include utils.getFont($size: 0.95em, $weight: 500, $lineHeight: 1.6);
-  color: #374151;
-  max-width: 42em;
+  @include utils.getFont($size: 0.9em, $weight: 400, $lineHeight: 1.6);
+  color: #4d7c52;
+  max-width: 35em;
 }
