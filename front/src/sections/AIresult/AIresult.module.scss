@@ -1,0 +1,234 @@
+@use '@scss/index' as utils;
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(2em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wrapper {
+  font-size: 1rem;
+  padding: 2em 1em;
+}
+
+.card {
+  padding: 2.5em 3em;
+  background-color: #ffffff;
+  border-radius: 1em;
+  box-shadow: 0 1em 2.5em rgba(0, 0, 0, 0.08), 0 0.5em 1em rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 60em;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  opacity: 0;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @media (max-width: 48em) {
+    padding: 2em 1.5em;
+  }
+
+  @media (max-width: 30em) {
+    padding: 1.5em 1.25em;
+    border-radius: 0.75em;
+  }
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  opacity: 0;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8em;
+  height: 1.8em;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffa726 0%, #ef6c00 100%);
+  color: #fff;
+  @include utils.getFont('sans-serif', 0.8em, 700);
+  flex-shrink: 0;
+  box-shadow: 0 0.2em 0.6em rgba(239, 108, 0, 0.3);
+}
+
+.logoLabel {
+  @include utils.getFont('sans-serif', 0.9em, 600);
+  color: #757575;
+}
+
+/* ---------- Score ---------- */
+
+.score {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+  padding: 0.5em 1em;
+  background-color: #e8f5e9;
+  border-radius: 0.5em;
+  border-left: 0.25em solid #2e7d32;
+  @include utils.getFont('sans-serif', 1em, 500, 1.4);
+  color: #1b5e20;
+  width: fit-content;
+  opacity: 0;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+
+  strong {
+    @include utils.getFont('sans-serif', 1.3em, 800);
+    color: #2e7d32;
+  }
+}
+
+/* ---------- Title / subtitle ---------- */
+
+.title {
+  margin: 0;
+  @include utils.getFont('sans-serif', 1.4em, 700, 1.2);
+  color: #2e7d32;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.subtitle {
+  margin: 0;
+  @include utils.getFont('sans-serif', 0.9em, 400, 1.4);
+  color: #616161;
+  opacity: 0;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+
+  strong {
+    font-weight: 600;
+    color: #424242;
+  }
+}
+
+/* ---------- Table ---------- */
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: 0.3em;
+  border-radius: 0.6em;
+  border: 1px solid #e0e0e0;
+  opacity: 0;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  @include utils.getFont('sans-serif', 0.88em, 400, 1.5);
+
+  th,
+  td {
+    padding: 0.7em 0.9em;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  th {
+    @include utils.getFont('sans-serif', 0.75em, 700, 1.2, 0.04em);
+    text-transform: uppercase;
+    color: #1b5e20;
+    background-color: #f1f8e9;
+    white-space: nowrap;
+    border-bottom: 2px solid #a5d6a7;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #fafafa;
+    }
+
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+.tdCenter {
+  text-align: center !important;
+}
+
+/* ---------- Status badges ---------- */
+
+.credited {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  border-radius: 0.3em;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  @include utils.getFont('sans-serif', 0.8em, 600);
+  white-space: nowrap;
+}
+
+.notCredited {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  border-radius: 0.3em;
+  background-color: #fff3e0;
+  color: #e65100;
+  @include utils.getFont('sans-serif', 0.8em, 600);
+  white-space: nowrap;
+}
+
+/* ---------- Bio errors ---------- */
+
+.bioSection {
+  margin-top: 0.5em;
+  padding-top: 1em;
+  border-top: 1px solid #e0e0e0;
+  opacity: 0;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+.bioTitle {
+  margin: 0 0 0.5em;
+  @include utils.getFont('sans-serif', 1.15em, 700, 1.2);
+  color: #2e7d32;
+}
+
+.bioList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.bioItem {
+  margin: 0;
+  padding: 0.6em 0.9em;
+  background-color: #fff3e0;
+  border-left: 0.2em solid #e65100;
+  border-radius: 0.3em;
+  @include utils.getFont('sans-serif', 0.88em, 400, 1.5);
+  color: #424242;
+
+  strong {
+    font-weight: 600;
+    color: #e65100;
+  }
+}
+
+.bioNone {
+  margin: 0;
+  @include utils.getFont('sans-serif', 0.9em, 400, 1.4);
+  color: #757575;
+}

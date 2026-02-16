@@ -1,0 +1,56 @@
+# SingleStartup: front + back + reverse proxy
+# Запуск: docker compose up -d --build
+
+services:
+
+  # ─── Reverse Proxy (Caddy) ───────────────────────
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: caddy
+    restart: unless-stopped
+    depends_on:
+      - frontend
+      - grader-api
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - web
+
+  # ─── Frontend (React / Vite → nginx) ─────────────
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - web
+
+  # ─── Backend (FastAPI grader API) ────────────────
+  grader-api:
+    build:
+      context: ./back/ege-biology-grader
+      dockerfile: Dockerfile
+    container_name: grader-api
+    restart: unless-stopped
+    env_file:
+      - ./back/ege-biology-grader/deploy/env/grader-api.env
+    expose:
+      - "8000"
+    networks:
+      - web
+
+networks:
+  web:
+    name: singlestartup_web
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,18 @@
+# Caddyfile — reverse proxy for SingleStartup
+#
+# - /test/*      → frontend (nginx, static React app)
+# - /api/*       → grader-api (FastAPI backend)
+#
+# Для продакшена замените :80 на ваш домен (напр. egegrader.ru)
+
+:80 {
+    # API — проксируем на бэкенд
+    handle /api/* {
+        reverse_proxy grader-api:8000
+    }
+
+    # Frontend — всё остальное
+    handle {
+        reverse_proxy frontend:80
+    }
+}

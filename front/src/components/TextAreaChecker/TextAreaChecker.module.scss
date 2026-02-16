@@ -1,0 +1,193 @@
+@use "@scss/index" as utils;
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  flex: 1;
+}
+
+.label {
+  @include utils.getFont('sans-serif', 0.9em, 700);
+  color: #1b5e20;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  transition: color 0.3s ease;
+}
+
+.labelIcon {
+  width: 1.4em;
+  height: 1.4em;
+  fill: currentColor;
+  opacity: 0.8;
+}
+
+.textarea {
+  @include utils.getFont('sans-serif', 0.95em, 400, 1.6);
+  padding: 1em 1.2em;
+  border: 0.0625em solid #e0e0e0;
+  border-radius: 0.6em;
+  resize: vertical;
+  color: #424242;
+  outline: none;
+  background-color: #fafafa;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  min-height: 5em;
+  width: 100%;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #bdbdbd;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    border-color: #bdbdbd;
+  }
+
+  &:focus {
+    border-color: #409b44;
+    background-color: #ffffff;
+    transform: translateY(-0.15em);
+
+    &::placeholder {
+      opacity: 0.7;
+    }
+  }
+}
+
+.fieldGroup:focus-within .label {
+  color: #e65100;
+}
+
+.activeBorder {
+  border-color: #a5d6a7;
+  background-color: #f1f8e9;
+
+  &:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0.5em 1em rgba(76, 175, 80, 0.15);
+  }
+}
+
+.fieldGroup:focus-within .activeBorder+.label {
+  color: #2e7d32;
+}
+
+.error {
+  @include utils.getFont("Inter", 0.8em, 400, 1);
+
+  color: red;
+}
+
+// ── Attach Photo ──
+
+.attachRow {
+  display: flex;
+  align-items: center;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.attachButton {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.35em 0.7em;
+  border: none;
+  background: transparent;
+  color: #757575;
+  cursor: pointer;
+  border-radius: 0.5em;
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: #1b5e20;
+    background-color: rgba(27, 94, 32, 0.06);
+
+    .attachIcon {
+      transform: rotate(-15deg);
+    }
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.attachIcon {
+  width: 1.15em;
+  height: 1.15em;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.attachText {
+  @include utils.getFont("sans-serif", 0.8em, 500);
+  letter-spacing: 0.01em;
+}
+
+// ── Preview ──
+
+.previewGallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+}
+
+.previewWrapper {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  border-radius: 0.6em;
+  overflow: hidden;
+  box-shadow: 0 0.2em 0.8em rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.previewImage {
+  display: block;
+  max-width: 10em;
+  max-height: 8em;
+  object-fit: cover;
+  border-radius: 0.6em;
+}
+
+.removeButton {
+  position: absolute;
+  top: 0.3em;
+  right: 0.3em;
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.85em;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    background: rgba(211, 47, 47, 0.85);
+    transform: scale(1.15);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
